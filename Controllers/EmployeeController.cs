@@ -50,6 +50,7 @@ namespace API.Controllers
 
             
             return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
+            // return Ok();
         }
 
         [HttpPut("{id}")]
