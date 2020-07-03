@@ -6,7 +6,7 @@ namespace API.Business.IService
     
     public interface IEmployeeService
     {
-        void add(Employee employee);
+        dynamic add(Employee employee);
         public IEnumerable<Employee> GetAll();
         Employee Find(string key);
        public void Remove(string Id);

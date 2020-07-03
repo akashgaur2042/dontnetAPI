@@ -7,8 +7,9 @@ namespace API.Business.IService
     {
         public void add(User user);
         public IEnumerable<User> GetAll();
-       public  User Find(string key);
+        public  User Find(string key);
         public void Remove(string Id);
+        public void userLogin();
         
 
         public string test();

@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using API.Business.IService;
 using API.Business.Service;
+using API.DataContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -39,6 +41,8 @@ namespace API
 
             services.AddTransient<IUserService,UserService>();
             services.AddTransient<IEmployeeService,EmloyeeService>();
+
+            services.AddDbContext<EmpManagementContext>(options => options.UseSqlServer(this.Configuration.GetConnectionString("connectedString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

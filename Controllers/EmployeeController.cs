@@ -14,24 +14,24 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
-        private IEmployeeService _employeeService ;
+        private IEmployeeService _employeeService {get;set;}
 
         public EmployeeController(IEmployeeService employeeService)
         {
-            this._employeeService = employeeService;
+            _employeeService = employeeService;
         }
 
 
         [HttpGet]
         public IEnumerable<Employee> GetAll()
         {
-            return this._employeeService.GetAll();
+            return _employeeService.GetAll();
         }
 
         [HttpGet("{id}", Name = "GetEmployees")]
         public IActionResult GetById([FromRoute] string id)
         {
-            var employee = this._employeeService.Find(id);
+            var employee = _employeeService.Find(id);
             if (employee == null)
             {
                 return NotFound();
@@ -40,16 +40,15 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Employee employee)
+        public IActionResult Create([FromBody]Employee employee)
         {
             if (employee == null)
             {
                 return BadRequest();
             }
             _employeeService.add(employee);
-
-            
-            return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
+        // return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
+            return Ok(employee);
         }
 
         [HttpPut("{id}")]
@@ -59,19 +58,19 @@ namespace API.Controllers
             {
                 return BadRequest();
             }
-            var employeeObj = this._employeeService.Find(id);
+            var employeeObj = _employeeService.Find(id);
             if (employeeObj == null)
             {
                 return NotFound();
             }
-            this._employeeService.Update(employee);
+            _employeeService.Update(employee);
             return new NoContentResult();
         }
 
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
-            this._employeeService.Remove(id);
+            _employeeService.Remove(id);
         }
     }
     }

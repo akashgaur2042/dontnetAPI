@@ -7,8 +7,9 @@ using Microsoft.Extensions.Logging;
 using API.Business.IService;
 using API.Business.Service;
 using API.UserModel;
-
-
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
+using API.Dtos;
 
 namespace API.Controllers
 {
@@ -16,22 +17,23 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        public IUserService lg {get; set;}
-        public UserController(IUserService _lg)
+        public IUserService userService;
+        public UserController(IUserService _userService)
         {
-            lg=_lg;
+            this.userService=_userService;
+            this.userService.userLogin();
         }
         
         [HttpGet]
         public IEnumerable<User> GetAll()
         {
-            return lg.GetAll();
+            return userService.GetAll();
         }
 
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult GetById(string id)
         {
-            var user = lg.Find(id);
+            var user = userService.Find(id);
             if (user == null)
             {
                 return NotFound();
@@ -39,29 +41,38 @@ namespace API.Controllers
             return new ObjectResult(user);
         }
 
-
         [HttpPost]
-        public IActionResult Create([FromBody] User user)
-        {
-            if (user == null)
+        public ActionResult login([FromBody] UserDto userDto)
+      {
+            if (userDto == null)
             {
                 return BadRequest();
             }
-            lg.add(user);
-            return CreatedAtRoute("GetUser", new { Controller = "user", id = user.username }, user);
+            User userResp= userService.Find(userDto.username);
+            
+            if(userResp!=null){
+                
+                if(userResp.username== userDto.username && userResp.password==userDto.password)
+            {    
+               
+                return Ok(userDto);
+            }
+             else{
+               return Unauthorized();
+              }
+            }
+            
+               return Unauthorized();
+            
+           
+            // userService.add(user);
+            // return CreatedAtRoute("GetUser", new { Controller = "user", id = user.username }, user);
         }
 
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
-            lg.Remove(id);
-        }
-
-
-        [HttpGet ("testing")]
-        public string Demo()
-        {
-            return lg.test();
+            userService.Remove(id);
         }
     }
 }

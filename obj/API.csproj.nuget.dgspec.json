@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\POC - 2\\API\\API.csproj": {}
+    "D:\\PoC\\dontnetAPI\\API.csproj": {}
   },
   "projects": {
-    "D:\\POC - 2\\API\\API.csproj": {
+    "D:\\PoC\\dontnetAPI\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\POC - 2\\API\\API.csproj",
+        "projectUniqueName": "D:\\PoC\\dontnetAPI\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\POC - 2\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\POC - 2\\API\\obj\\",
+        "projectPath": "D:\\PoC\\dontnetAPI\\API.csproj",
+        "packagesPath": "C:\\Users\\akash.gaur\\.nuget\\packages\\",
+        "outputPath": "D:\\PoC\\dontnetAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\akash.gaur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -45,6 +56,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

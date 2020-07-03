@@ -7,7 +7,6 @@ namespace API.EmployeeModel
 
 public class Employee{
 
-        [Key]
         [Required]
         public string employeeid{get;set;}
         [Required]

@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\bin\\Debug",
+    "\\Business",
+    "\\Business\\Service",
+    "\\Controllers",
+    "\\DbContext",
+    "\\Dtos",
+    "\\Model"
+  ],
+  "SelectedNode": "\\DbContext\\EmpManagementContext.cs",
+  "PreviewInSolutionExplorer": false
+}

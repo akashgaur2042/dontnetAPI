@@ -1,5 +1,5 @@
 using System;
-namespace API.UserDto
+namespace API.Dtos
 {
     public class UserDto
 {
