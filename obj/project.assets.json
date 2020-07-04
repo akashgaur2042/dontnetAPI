@@ -4887,11 +4887,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PoC\\dontnetAPI\\API.csproj",
+      "projectUniqueName": "D:\\PoC\\dotnetAPI\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\PoC\\dontnetAPI\\API.csproj",
+      "projectPath": "D:\\PoC\\dotnetAPI\\API.csproj",
       "packagesPath": "C:\\Users\\akash.gaur\\.nuget\\packages\\",
-      "outputPath": "D:\\PoC\\dontnetAPI\\obj\\",
+      "outputPath": "D:\\PoC\\dotnetAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
