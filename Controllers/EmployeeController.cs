@@ -47,15 +47,8 @@ namespace API.Controllers
                 return BadRequest();
             }
             _employeeService.add(employee);
-<<<<<<< HEAD
         // return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
             return Ok(employee);
-=======
-
-            
-            return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
-            // return Ok();
->>>>>>> 5b08f70eec492e0673bbe321495a328f919e6591
         }
 
         [HttpPut("{id}")]
