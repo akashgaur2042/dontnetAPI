@@ -18,10 +18,6 @@ namespace API.Business.Service
             this._empManagementContext = empManagementContext;
         }
 
-        public string test(){
-            return "Hello";
-        }
-
         public  dynamic add(Employee employee)
         {
         Employee empResp = employee;
@@ -31,26 +27,22 @@ namespace API.Business.Service
           return result;
         }
 
-        public Employee Find(string key)
+        public  Employee Find(string key)
         {
              return this._empManagementContext
                 .Employee.Where(e => e.employeeid.Equals(key))
                 .SingleOrDefault();
         }
 
-        public  IEnumerable<Employee> GetAll()
+        public IEnumerable<Employee> GetAll()
         {
-            IEnumerable<Employee> employees = this._empManagementContext.Employee.AsEnumerable();
+            IEnumerable<Employee> employees =this._empManagementContext.Employee.AsEnumerable();
 
             return employees;
         }
 
-        public  void  Remove(string Id)
+        public void  Remove(string Id)
         {
-            //  var employeeToRemove = EmployeesList.SingleOrDefault(r => r.employeeid == Id);
-            // if (employeeToRemove != null)
-            //    EmployeesList.Remove(employeeToRemove);
-
             var employeeToRemove= this._empManagementContext.Employee
             .Where(r=>r.employeeid.Equals(Id))
             .SingleOrDefault();
@@ -63,8 +55,7 @@ namespace API.Business.Service
         public void Update(Employee employee)
         {
             
-            // var employeeToUpdate = EmployeesList.SingleOrDefault(r => r.employeeid == employee.employeeid);
-            var employeeToUpdate = this._empManagementContext.Employee
+             var employeeToUpdate = this._empManagementContext.Employee
             .Where(r=>r.employeeid==employee.employeeid)
             .SingleOrDefault();
             if (employeeToUpdate != null)

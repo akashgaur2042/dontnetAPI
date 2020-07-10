@@ -15,19 +15,15 @@ namespace API.Controllers
     public class EmployeeController : Controller
     {
         private IEmployeeService _employeeService {get;set;}
-
         public EmployeeController(IEmployeeService employeeService)
         {
             _employeeService = employeeService;
         }
-
-
         [HttpGet]
         public IEnumerable<Employee> GetAll()
         {
-            return _employeeService.GetAll();
+            return  _employeeService.GetAll();
         }
-
         [HttpGet("{id}", Name = "GetEmployees")]
         public IActionResult GetById([FromRoute] string id)
         {
@@ -36,27 +32,24 @@ namespace API.Controllers
             {
                 return NotFound();
             }
-            return new ObjectResult(employee);
+            return Ok(employee);
         }
-
         [HttpPost]
         public IActionResult Create([FromBody]Employee employee)
         {
             if (employee == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             _employeeService.add(employee);
-        // return CreatedAtRoute("GetEmployees", new { Controller = "Employee", id = employee.employeeid }, employee);
             return Ok(employee);
         }
-
         [HttpPut("{id}")]
         public IActionResult Update([FromRoute] string id, [FromBody] Employee employee)
         {
             if (employee == null)
             {
-                return BadRequest();
+                return NotFound();
             }
             var employeeObj = _employeeService.Find(id);
             if (employeeObj == null)
@@ -64,9 +57,8 @@ namespace API.Controllers
                 return NotFound();
             }
             _employeeService.Update(employee);
-            return new NoContentResult();
+            return Ok(employee);
         }
-
         [HttpDelete("{id}")]
         public void Delete(string id)
         {

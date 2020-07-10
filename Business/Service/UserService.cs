@@ -14,9 +14,6 @@ namespace API.Business.Service
         public UserService (EmpManagementContext empManagementContext){
             this._empManagementContext = empManagementContext;
         }
-        public string test(){
-            return "Hello";
-        }
 
         public void add(User user)
         {
@@ -25,7 +22,7 @@ namespace API.Business.Service
         public void userLogin()
         {
                 User user=new User();
-                user.username="Akash";user.password="admin";
+               
                 this.add(user);
 
         }
@@ -40,7 +37,6 @@ namespace API.Business.Service
 
         public IEnumerable<User> GetAll()
         {
-            //return UsersList;
              IEnumerable<User> users = this._empManagementContext.User.AsEnumerable();
              return users;
         }

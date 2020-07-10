@@ -11,7 +11,5 @@ namespace API.Business.IService
         Employee Find(string key);
        public void Remove(string Id);
        public void Update(Employee employee);
-
-        public string test();
     }
 }

@@ -11,7 +11,5 @@ namespace API.Business.IService
         public void Remove(string Id);
         public void userLogin();
         
-
-        public string test();
     }
 }

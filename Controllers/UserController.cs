@@ -38,7 +38,7 @@ namespace API.Controllers
             {
                 return NotFound();
             }
-            return new ObjectResult(user);
+            return Ok(user);
         }
 
         [HttpPost]
@@ -61,18 +61,14 @@ namespace API.Controllers
                return Unauthorized();
               }
             }
-            
                return Unauthorized();
-            
-           
-            // userService.add(user);
-            // return CreatedAtRoute("GetUser", new { Controller = "user", id = user.username }, user);
-        }
+            }
 
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
-            userService.Remove(id);
+           userService.Remove(id);
+            
         }
     }
 }
